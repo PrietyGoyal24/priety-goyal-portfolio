@@ -5,6 +5,10 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const handleDownloadResume = () => {
+    // Open resume in new tab
+    window.open('/Resume.pdf', '_blank');
+    
+    // Also trigger download
     const link = document.createElement('a');
     link.href = '/Resume.pdf';
     link.download = 'Priety_Goyal_Resume.pdf';
@@ -126,7 +130,7 @@ const Hero = () => {
                 style={{ width: '120%', height: '120%', left: '-10%', top: '-10%' }}
               />
               <motion.img
-                src="https://images.unsplash.com/photo-1494790108755-2616b612b5bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                src="/lovable-uploads/be5098ac-de04-498a-8f53-e4c535ef3422.png"
                 alt="Priety Goyal"
                 className="w-80 h-80 rounded-full object-cover border-4 border-primary/30 animate-float shadow-2xl"
                 whileHover={{ scale: 1.05 }}
