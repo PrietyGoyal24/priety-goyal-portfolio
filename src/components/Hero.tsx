@@ -124,17 +124,42 @@ const Hero = () => {
           >
             <div className="relative">
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-purple-600 opacity-20 animate-pulse"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  rotate: [0, 5, -5, 0]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-purple-600 opacity-20 blur-xl"
                 style={{ width: '120%', height: '120%', left: '-10%', top: '-10%' }}
               />
               <motion.img
                 src="/lovable-uploads/be5098ac-de04-498a-8f53-e4c535ef3422.png"
                 alt="Priety Goyal"
-                className="w-80 h-80 rounded-full object-cover border-4 border-primary/30 animate-float shadow-2xl"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                className="w-80 h-80 rounded-full object-cover border-4 border-primary/30 shadow-2xl relative z-10"
+                animate={{ 
+                  y: [0, -20, 0],
+                  rotateY: [0, 10, 0, -10, 0]
+                }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: 15,
+                  transition: { duration: 0.3 }
+                }}
+              />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30"
+                style={{ width: '130%', height: '130%', left: '-15%', top: '-15%' }}
               />
             </div>
           </motion.div>
