@@ -46,7 +46,7 @@ const Hero = () => {
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                 Hi, I'm{' '}
-                <span className="text-gradient-primary animate-gradient-shift bg-300%">
+                <span className="text-gradient-primary animate-gradient-shift bg-300% whitespace-nowrap">
                   Priety Goyal
                 </span>
               </h1>

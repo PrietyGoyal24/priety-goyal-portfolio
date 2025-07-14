@@ -32,7 +32,7 @@ const About = () => {
 
   const highlights = [
     { label: 'Projects Completed', value: '15+', icon: <Briefcase className="w-5 h-5" /> },
-    { label: 'Years of Learning', value: '2+', icon: <Calendar className="w-5 h-5" /> },
+    { label: 'Years of Learning', value: '1+', icon: <Calendar className="w-5 h-5" /> },
     { label: 'Technologies', value: '12+', icon: <Code className="w-5 h-5" /> },
   ];
 
