@@ -20,6 +20,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
+				'inter': ['Inter', 'sans-serif'],
 				'poppins': ['Poppins', 'sans-serif'],
 			},
 			colors: {
@@ -79,43 +80,68 @@ export default {
 						height: '0'
 					}
 				},
-				'glow': {
+				'glow-pulse': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)'
+						boxShadow: '0 0 20px rgba(100, 255, 218, 0.4)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(59, 130, 246, 0.8)'
+						boxShadow: '0 0 60px rgba(100, 255, 218, 0.8)'
 					}
 				},
-				'float': {
+				'float-gentle': {
 					'0%, 100%': {
-						transform: 'translateY(0px)'
+						transform: 'translateY(0px) rotate(0deg)'
+					},
+					'25%': {
+						transform: 'translateY(-8px) rotate(1deg)'
 					},
 					'50%': {
-						transform: 'translateY(-10px)'
+						transform: 'translateY(-4px) rotate(0deg)'
+					},
+					'75%': {
+						transform: 'translateY(-12px) rotate(-1deg)'
 					}
 				},
-				'typing': {
+				'slide-up': {
 					'from': {
-						width: '0'
+						opacity: '0',
+						transform: 'translateY(50px)'
 					},
 					'to': {
-						width: '100%'
+						opacity: '1',
+						transform: 'translateY(0)'
 					}
 				},
-				'blink': {
+				'scale-in': {
+					'from': {
+						opacity: '0',
+						transform: 'scale(0.9)'
+					},
+					'to': {
+						opacity: '1',
+						transform: 'scale(1)'
+					}
+				},
+				'gradient-shift': {
+					'0%, 100%': {
+						backgroundPosition: '0% 50%'
+					},
 					'50%': {
-						borderColor: 'transparent'
+						backgroundPosition: '100% 50%'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'glow': 'glow 2s ease-in-out infinite',
-				'float': 'float 3s ease-in-out infinite',
-				'typing': 'typing 3.5s steps(40, end)',
-				'blink': 'blink 1s infinite'
+				'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+				'float-gentle': 'float-gentle 6s ease-in-out infinite',
+				'slide-up': 'slide-up 0.8s ease-out',
+				'scale-in': 'scale-in 0.6s ease-out',
+				'gradient-shift': 'gradient-shift 4s ease infinite'
+			},
+			backgroundSize: {
+				'300%': '300% 300%'
 			}
 		}
 	},
