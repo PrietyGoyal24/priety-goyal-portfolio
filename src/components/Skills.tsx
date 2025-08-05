@@ -100,18 +100,6 @@ const Skills = () => {
           icon: '📮',
           description: 'API development and testing platform for building and documenting APIs'
         },
-        { 
-          name: 'Data Structures', 
-          gradient: 'from-purple-600 to-blue-600',
-          icon: '🧠',
-          description: 'Algorithms and data structures for efficient problem-solving approaches'
-        },
-        { 
-          name: 'Responsive Design', 
-          gradient: 'from-pink-500 to-purple-500',
-          icon: '📱',
-          description: 'Mobile-first approach ensuring optimal experience across all devices'
-        },
       ],
     },
   ];
