@@ -1,81 +1,115 @@
 
-import { useState } from 'react';
-import { Menu, X, BookOpen } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
-  const navItems = [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+  const menuItems = [
+    { href: '#home', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#contact', label: 'Contact' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = menuItems.map(item => item.href.substring(1));
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-      <div className="container-custom">
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className="fixed top-0 left-0 right-0 z-50 glass-effect"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-white" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-xl font-bold text-gradient"
+          >
+            Priety Goyal
+          </motion.div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:block">
+            <div className="flex items-center space-x-8">
+              {menuItems.map((item) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
+                    activeSection === item.href.substring(1)
+                      ? 'text-primary glow-blue'
+                      : 'text-gray-300 hover:text-white hover:glow-blue'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {item.label}
+                </motion.a>
+              ))}
             </div>
-            <span className="text-xl font-bold text-gradient-primary">StudyGenie</span>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-300 hover:text-white"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden glass-effect"
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            {menuItems.map((item) => (
               <a
-                key={item.name}
+                key={item.href}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  activeSection === item.href.substring(1)
+                    ? 'text-primary bg-primary/10'
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
+                onClick={() => setIsOpen(false)}
               >
-                {item.name}
+                {item.label}
               </a>
             ))}
           </div>
-
-          {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost">Sign In</Button>
-            <Button className="bg-gradient-primary hover:opacity-90">Get Started</Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-              <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="ghost" className="justify-start">Sign In</Button>
-                <Button className="bg-gradient-primary hover:opacity-90 justify-start">Get Started</Button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+        </motion.div>
+      )}
+    </motion.nav>
   );
 };
 
