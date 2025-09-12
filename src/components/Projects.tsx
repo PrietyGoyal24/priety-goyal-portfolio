@@ -12,13 +12,13 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'Reebok Clone',
-      description: 'A fully responsive e-commerce platform featuring Firebase authentication, advanced product filtering, and seamless shopping cart functionality with modern UI design.',
-      image: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      tech: ['React', 'Firebase', 'CSS3', 'JavaScript'],
-      github: 'https://github.com/PrietyGoyal24/Reebok.git',
-      live: 'https://steady-dasik-fea1e4.netlify.app/',
-      features: ['Firebase Authentication', 'Product Filtering', 'Responsive Design', 'Shopping Cart'],
+      title: 'StudyGenie – AI-Powered Study Companion',
+      description: 'Designed an intelligent study assistant where students can input syllabus topics and deadlines to get per-sonalized plans',
+      image: 'https://tse1.mm.bing.net/th/id/OIP.841O6KJV3qkkeGbJbqPgdAHaEL?pid=Api&P=0&h=220',
+      tech: ['React', 'Tailwind', 'TypeScript', 'React Router Dom'],
+      github: 'https://github.com/PrietyGoyal24/StudyGenie-AI-Project.git',
+      live: 'https://study-genie-ai-project.vercel.app/',
+      features: ['AI-powered personalized study plans', 'Custom quiz generation based on topics', 'Responsive Design', 'Mobile-first responsive design'],
       gradient: 'from-blue-500 to-purple-600',
     },
     {
